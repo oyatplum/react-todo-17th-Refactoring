@@ -5,6 +5,7 @@ import Todo from './components/Todo';
 import Done from './components/Done';
 import Calendar from './calendar/Calendar';
 import GlobalStyle from './styles/GloalStyle';
+import Me from './images/me.jpg';
 
 const initialTodoData = localStorage.getItem('list')
   ? JSON.parse(localStorage.getItem('list'))
@@ -44,10 +45,16 @@ function App() {
   return (
     <C>
       <GlobalStyle />
-      <Title>Todo Title</Title>
+      <Title>todo mate</Title>
       <Flex>
         <Con>
-          <div>아</div>
+          <Profile.Container>
+            <Profile.Image src={Me} />
+            <Profile.Section>
+              <Profile.Name>예지</Profile.Name>
+              <Profile.Intro>열심히 살자</Profile.Intro>
+            </Profile.Section>
+          </Profile.Container>
           <Calendar />
         </Con>
         <Conatiner>
@@ -94,7 +101,7 @@ const C = styled.div`
 `;
 const Flex = styled.div`
   display: flex;
-  //flex-direction: row;
+  margin-top: 18px;
 `;
 const Section = styled.div`
   flex: 0.5;
@@ -104,18 +111,41 @@ const Section = styled.div`
   padding: 0px 20px 15px 20px;
 `;
 const Conatiner = styled.div`
-  //background-color: white;
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 425px;
-  //border-radius: 20px;
-  //box-shadow: 1px 1px 15px rgba(73, 71, 71, 0.5);
 `;
 const Con = styled.div`
   height: 100vh;
   width: 425px;
 `;
-const Title = styled.div``;
+const Title = styled.div`
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 23px;
+`;
+const Profile = {
+  Container: styled.div`
+    display: flex;
+    align-items: center;
+  `,
+  Image: styled.img`
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  `,
+  Section: styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+  `,
+  Name: styled.div`
+    font-weight: bold;
+    font-size: 15px;
+  `,
+  Intro: styled.div`
+    font-size: 12px;
+  `,
+};
 
 export default App;

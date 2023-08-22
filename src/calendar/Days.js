@@ -1,16 +1,28 @@
 import React from 'react';
-import './Days.css';
+import styled from 'styled-components';
 
 export default function Days() {
-  const days = ['SUN', 'MON', 'THU', 'WED', 'THRS', 'FRI', 'SAT'];
-  const days_s = [];
+  const days = ['일', '월', '화', '수', '목', '금', '토'];
 
-  for (let i = 0; i < 7; i++) {
-    days_s.push(
-      <div className="each_days" key={i}>
-        {days[i]}
-      </div>
-    );
-  }
-  return <div className="days">{days_s}</div>;
+  return (
+    <Date.Container>
+      <Date.Days>
+        {days.map((day, idx) => (
+          <Date.Day key={idx}>{day}</Date.Day>
+        ))}
+      </Date.Days>
+    </Date.Container>
+  );
 }
+
+const Date = {
+  Container: styled.div``,
+  Days: styled.div`
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    font-size: 13px;
+    font-weight: 600;
+  `,
+  Day: styled.div``,
+};

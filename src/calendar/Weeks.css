@@ -8,31 +8,27 @@
   justify-content: space-around;
   margin: 20px 0;
 }
-.one_weeksame_month {
+
+.one_week_same_month {
   width: 40px;
   text-align: center;
+  cursor: pointer;
 }
-.one_weeksame_month:hover {
+.one_week_same_month:hover {
   color: rgb(255, 222, 121);
 }
-.one_weeksame_day {
+.one_week_same_day {
   width: 40px;
   text-align: center;
-  color: rgb(193, 141, 18);
+  color: white;
   font-weight: bold;
+  cursor: pointer;
+  background-color: #0069ffc4;
+  border-radius: 50%;
 }
-.one_weeksame_day:hover {
-  color: rgb(255, 222, 121);
-}
-.one_weeknot_same_month {
+
+.one_week_not_same_month {
   color: gray;
   width: 40px;
   text-align: center;
-}
-
-@media screen and (min-width: 1200px) {
-  .month {
-    font-size: 20px;
-    padding: 0 20px;
-  }
 }

@@ -25,7 +25,7 @@ export default function Weeks({ currentMonth, currentDate }) {
       formattedDate = format(day, 'd');
       one_week.push(
         <div
-          className={`one_week${
+          className={`one_week_${
             !isSameMonth(day, StartMonth)
               ? 'not_same_month'
               : !isSameDay(day, currentDate)
