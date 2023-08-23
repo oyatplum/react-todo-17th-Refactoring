@@ -12,8 +12,14 @@ const initialTodoData = localStorage.getItem('list')
   : [];
 
 function App() {
+  const [show, setShow] = useState(false);
+
   const [list, setList] = useState(initialTodoData);
   const [value, setValue] = useState('');
+
+  const clickBtn = () => {
+    setShow(!show);
+  };
 
   const getTodo = (todo) => {
     const newTodo = {
@@ -58,9 +64,10 @@ function App() {
           <Calendar />
         </Con>
         <Conatiner>
-          <Form getTodo={getTodo} value={value} setValue={setValue}></Form>
+          <Todos.Title>Todo List</Todos.Title>
+          <Todos.Btn onClick={() => clickBtn()}>+</Todos.Btn>
+
           <Section>
-            <h3>To do...😿{countTodo}</h3>
             {list.map((data) =>
               data.completed ? (
                 <></>
@@ -74,8 +81,11 @@ function App() {
                 ></Todo>
               )
             )}
+            {show && (
+              <Form getTodo={getTodo} value={value} setValue={setValue}></Form>
+            )}
           </Section>
-          <Section>
+          {/* <Section>
             <h3>Done..!😻{list.length - countTodo}</h3>
             {list.map((data) =>
               data.completed ? (
@@ -88,13 +98,20 @@ function App() {
                 <></>
               )
             )}
-          </Section>
+          </Section> */}
         </Conatiner>
       </Flex>
     </C>
   );
 }
 
+const Todos = {
+  Title: styled.div`
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 23px;
+  `,
+  Btn: styled.div``,
+};
 const C = styled.div`
   height: 100vh;
   width: 850px;
@@ -105,7 +122,7 @@ const Flex = styled.div`
 `;
 const Section = styled.div`
   flex: 0.5;
-  border-top: 2px solid rgb(177, 171, 171);
+
   overflow: auto;
   padding-left: 10px;
   padding: 0px 20px 15px 20px;

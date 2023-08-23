@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const click = () => {
+    setIsClicked(!isClicked);
+  };
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
 
@@ -37,9 +42,12 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
   } else {
     return (
       <TodoList>
+        <Btn onClick={() => click()}>
+          {isClicked ? <Done></Done> : <NotDone></NotDone>}
+        </Btn>
         <div>
           {Todo.title}
-          <Button onClick={() => toggleTodo(Todo.id)}>✔</Button>
+
           <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
           <Button onClick={() => setIsEditing(true)}>🛠</Button>
         </div>
@@ -48,6 +56,19 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
   }
 };
 
+const Btn = styled.div``;
+const Done = styled.div`
+  background-color: #0069ffc4;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+`;
+const NotDone = styled.div`
+  background-color: #dddddd;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+`;
 const TodoList = styled.div`
   display: flex;
   #edit-todo {

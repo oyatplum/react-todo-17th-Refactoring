@@ -16,41 +16,45 @@ const Form = ({ getTodo, value, setValue }) => {
     setValue(e.target.value);
   };
   return (
-    <div>
+    <Container>
+      <NotDone></NotDone>
       <Enter>
         <form onSubmit={submitTodo}>
-          <h2>Todo List ✔</h2>
-          <input
-            type="text"
-            value={value}
-            placeholder=" Enter your to do"
-            onChange={handleChange}
-            id="input-todo"
-          />
-          <button type="submit" id="button">
-            ➕
-          </button>
+          <C>
+            <input
+              type="text"
+              value={value}
+              placeholder=" Enter your to do"
+              onChange={handleChange}
+              id="input-todo"
+            />
+          </C>
         </form>
       </Enter>
-    </div>
+    </Container>
   );
 };
+const Container = styled.div`
+  display: flex;
+`;
+const NotDone = styled.div`
+  background-color: #dddddd;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+`;
 const Enter = styled.div`
-  padding: 0px 20px 15px 20px;
+  padding: 0px 20px 15px 10px;
   #input-todo {
     border: none;
-    background-color: rgb(205, 222, 241);
-    border-radius: 20px;
+    outline: none;
     height: 35px;
     font-size: 15px;
     width: 85%;
   }
-  #button {
-    border: none;
-    background: none;
-    font-size: 18px;
-    width: 40px;
-  }
+`;
+const C = styled.div`
+  border-bottom: 2.5px solid;
 `;
 
 export default Form;
