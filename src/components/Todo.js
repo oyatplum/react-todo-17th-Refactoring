@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 
 const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
   const [isClicked, setIsClicked] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+  const clickModal = () => setShowModal(!showModal);
 
   const click = () => {
     setIsClicked(!isClicked);
@@ -48,6 +52,9 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
         <div>
           {Todo.title}
 
+          <Menu onClick={clickModal}> 냐</Menu>
+          {showModal && <Modal clickModal={clickModal} />}
+
           <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
           <Button onClick={() => setIsEditing(true)}>🛠</Button>
         </div>
@@ -55,6 +62,8 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
     );
   }
 };
+
+const Menu = styled.div``;
 
 const Btn = styled.div``;
 const Done = styled.div`
