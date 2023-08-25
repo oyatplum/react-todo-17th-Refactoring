@@ -1,86 +1,71 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function Modal({
-  clickModal,
-  toggleTodo,
-  deleteTodo,
-  title,
-  list,
-  setList,
-  Todo,
-}) {
+function Modal({ clickModal, deleteTodo, Todo, setIsEditing }) {
   const click = (e) => {
     e.stopPropagation();
   };
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(title);
-
-  const editTodo = (e) => {
-    setEditedTitle(e.target.value);
-  };
-
-  const submitEditedTodo = (event) => {
-    event.preventDefault();
-
-    let editedTodo = list.map((data) => {
-      if (data.id === Todo.id) {
-        data.title = editedTitle;
-      }
-      return data;
-    });
-
-    setList(editedTodo);
-    setIsEditing(false);
-    localStorage.setItem('list', JSON.stringify(editedTodo));
-  };
-
   return (
     <ModalBox onClick={clickModal}>
-      <SearchModalContent onClick={() => click()}> 냐</SearchModalContent>
-      <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
-      <Button onClick={() => setIsEditing(true)}>🛠</Button>
+      <Modals>
+        <SearchModalContent>
+          <Title>{Todo.title}</Title>
+          <Buttons>
+            <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
+            <Button onClick={() => setIsEditing(true)}>🛠</Button>
+          </Buttons>
+        </SearchModalContent>
+      </Modals>
     </ModalBox>
   );
 }
 
 export default Modal;
 
+const Buttons = styled.div`
+  display: flex;
+`;
+
+const Title = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
 const ModalBox = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+`;
+
+const Modals = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
 
 const SearchModalContent = styled.div`
   padding: 1.5rem 3rem;
-  width: 180px;
-  height: 150px;
-  border: 3px solid #000000;
+  width: 280px;
+  height: 250px;
+  //border: 3px solid #000000;
+  border-radius: 15px 15px 0 0;
   display: flex;
   flex-direction: column;
-  background-color: #ffe27c;
-  justify-content: center;
-`;
-const Info = styled.div`
-  font-size: 18px;
-  font-weight: bold;
-`;
-
-const InfoWrapper = styled.div`
-  margin-bottom: 25px;
+  background-color: rgb(255 255 255);
+  // justify-content: center;
+  align-items: center;
 `;
 const Button = styled.button`
   background-color: #f5f5f5;
-  border-radius: 40px;
+  border-radius: 10px;
   border: 3px solid #000000;
   font-weight: bold;
   font-size: 15px;
@@ -91,5 +76,3 @@ const Button = styled.button`
     transition: 0.4s;
   }
 `;
-
-const ButtonWrapper = styled.div``;

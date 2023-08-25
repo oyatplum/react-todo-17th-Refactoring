@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
+import menu from './../images/menu.png';
 
 const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
   const [isClicked, setIsClicked] = useState(false);
@@ -12,7 +13,7 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
     setIsClicked(!isClicked);
   };
   const [isEditing, setIsEditing] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(title);
+  const [editedTitle, setEditedTitle] = useState(Todo.title);
 
   const editTodo = (e) => {
     setEditedTitle(e.target.value);
@@ -52,20 +53,15 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
         <Contents>
           {Todo.title}
 
-          <Menu onClick={() => clickModal()}> .... </Menu>
+          <Menu onClick={() => clickModal()} src={menu} />
           {showModal && (
             <Modal
               clickModal={clickModal}
               Todo={Todo}
-              list={list}
-              setList={setList}
-              toggleTodo={toggleTodo}
               deleteTodo={deleteTodo}
+              setIsEditing={setIsEditing}
             />
           )}
-
-          <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
-          <Button onClick={() => setIsEditing(true)}>🛠</Button>
         </Contents>
       </TodoList>
     );
@@ -74,9 +70,15 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
 
 const Contents = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
 `;
 
-const Menu = styled.div``;
+const Menu = styled.img`
+  width: 15px;
+  height: 15px;
+`;
 
 const Btn = styled.div``;
 const Done = styled.div`

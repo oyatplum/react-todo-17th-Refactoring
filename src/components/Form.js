@@ -36,6 +36,7 @@ const Form = ({ getTodo, value, setValue }) => {
 };
 const Container = styled.div`
   display: flex;
+  align-items: center;
 `;
 const NotDone = styled.div`
   background-color: #dddddd;

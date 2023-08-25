@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Form from './components/Form';
 import Todo from './components/Todo';
-import Done from './components/Done';
 import Calendar from './calendar/Calendar';
 import GlobalStyle from './styles/GloalStyle';
 import Me from './images/me.jpg';
