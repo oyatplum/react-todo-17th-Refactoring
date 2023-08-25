@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Modal(clickModal) {
-  const click = (e) => {
-    e.stopPropagation();
-  };
+function Modal({ clickModal }) {
+  // const click = (e) => {
+  //   // e.stopPropagation()
+  // };
   return (
     <ModalBox onClick={clickModal}>
-      <SearchModalContent onClick={() => click()}>냐</SearchModalContent>
+      <SearchModalContent>냐</SearchModalContent>
     </ModalBox>
   );
 }

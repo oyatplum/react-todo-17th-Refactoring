@@ -49,19 +49,23 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
         <Btn onClick={() => click()}>
           {isClicked ? <Done></Done> : <NotDone></NotDone>}
         </Btn>
-        <div>
+        <Contents>
           {Todo.title}
 
-          <Menu onClick={clickModal}> 냐</Menu>
+          <Menu onClick={() => clickModal()}> .... </Menu>
           {showModal && <Modal clickModal={clickModal} />}
 
           <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
           <Button onClick={() => setIsEditing(true)}>🛠</Button>
-        </div>
+        </Contents>
       </TodoList>
     );
   }
 };
+
+const Contents = styled.div`
+  display: flex;
+`;
 
 const Menu = styled.div``;
 

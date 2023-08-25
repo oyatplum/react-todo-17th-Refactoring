@@ -68,11 +68,12 @@ function App() {
           <Todos.Btn onClick={() => clickBtn()}>+</Todos.Btn>
 
           <Section>
-            {list.map((data) =>
+            {list.map((data, index) =>
               data.completed ? (
                 <></>
               ) : (
                 <Todo
+                  key={index}
                   Todo={data}
                   list={list}
                   setList={setList}
@@ -85,20 +86,6 @@ function App() {
               <Form getTodo={getTodo} value={value} setValue={setValue}></Form>
             )}
           </Section>
-          {/* <Section>
-            <h3>Done..!😻{list.length - countTodo}</h3>
-            {list.map((data) =>
-              data.completed ? (
-                <Done
-                  Todo={data}
-                  toggleTodo={toggleTodo}
-                  deleteTodo={deleteTodo}
-                ></Done>
-              ) : (
-                <></>
-              )
-            )}
-          </Section> */}
         </Conatiner>
       </Flex>
     </C>
