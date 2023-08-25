@@ -53,7 +53,16 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
           {Todo.title}
 
           <Menu onClick={() => clickModal()}> .... </Menu>
-          {showModal && <Modal clickModal={clickModal} />}
+          {showModal && (
+            <Modal
+              clickModal={clickModal}
+              Todo={Todo}
+              list={list}
+              setList={setList}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+            />
+          )}
 
           <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
           <Button onClick={() => setIsEditing(true)}>🛠</Button>

@@ -1,13 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function Modal({ clickModal }) {
-  // const click = (e) => {
-  //   // e.stopPropagation()
-  // };
+function Modal({
+  clickModal,
+  toggleTodo,
+  deleteTodo,
+  title,
+  list,
+  setList,
+  Todo,
+}) {
+  const click = (e) => {
+    e.stopPropagation();
+  };
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(title);
+
+  const editTodo = (e) => {
+    setEditedTitle(e.target.value);
+  };
+
+  const submitEditedTodo = (event) => {
+    event.preventDefault();
+
+    let editedTodo = list.map((data) => {
+      if (data.id === Todo.id) {
+        data.title = editedTitle;
+      }
+      return data;
+    });
+
+    setList(editedTodo);
+    setIsEditing(false);
+    localStorage.setItem('list', JSON.stringify(editedTodo));
+  };
+
   return (
     <ModalBox onClick={clickModal}>
-      <SearchModalContent>냐</SearchModalContent>
+      <SearchModalContent onClick={() => click()}> 냐</SearchModalContent>
+      <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
+      <Button onClick={() => setIsEditing(true)}>🛠</Button>
     </ModalBox>
   );
 }
