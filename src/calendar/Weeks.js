@@ -24,17 +24,19 @@ export default function Weeks({ currentMonth, currentDate }) {
     for (let i = 0; i < 7; i++) {
       formattedDate = format(day, 'd');
       one_week.push(
-        <div
-          className={`one_week_${
-            !isSameMonth(day, StartMonth)
-              ? 'not_same_month'
-              : !isSameDay(day, currentDate)
-              ? 'same_month'
-              : 'same_day'
-          }`}
-          key={day}
-        >
-          {formattedDate}
+        <div className="globe">
+          <div
+            className={`one_week_${
+              !isSameMonth(day, StartMonth)
+                ? 'not_same_month'
+                : !isSameDay(day, currentDate)
+                ? 'same_month'
+                : 'same_day'
+            }`}
+            key={day}
+          >
+            {formattedDate}
+          </div>
         </div>
       );
       day = addDays(day, 1);

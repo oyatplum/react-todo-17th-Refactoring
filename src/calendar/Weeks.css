@@ -6,11 +6,18 @@
 .one_month {
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin: 10px 0;
+}
+
+.globe {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .one_week_same_month {
-  width: 40px;
   text-align: center;
   cursor: pointer;
 }
@@ -18,7 +25,11 @@
   color: rgb(255, 222, 121);
 }
 .one_week_same_day {
-  width: 40px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   font-weight: bold;
@@ -29,6 +40,5 @@
 
 .one_week_not_same_month {
   color: gray;
-  width: 40px;
   text-align: center;
 }

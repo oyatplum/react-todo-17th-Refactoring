@@ -12,8 +12,8 @@ function Modal({ clickModal, deleteTodo, Todo, setIsEditing }) {
         <SearchModalContent>
           <Title>{Todo.title}</Title>
           <Buttons>
-            <Button onClick={() => deleteTodo(Todo.id)}>✖</Button>
-            <Button onClick={() => setIsEditing(true)}>🛠</Button>
+            <Button onClick={() => setIsEditing(true)}>수정하기 🛠</Button>
+            <Button onClick={() => deleteTodo(Todo.id)}>삭제하기 ✖</Button>
           </Buttons>
         </SearchModalContent>
       </Modals>
@@ -25,11 +25,14 @@ export default Modal;
 
 const Buttons = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 320px;
 `;
 
 const Title = styled.div`
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 10px;
 `;
 
 const ModalBox = styled.div`
@@ -64,15 +67,16 @@ const SearchModalContent = styled.div`
   align-items: center;
 `;
 const Button = styled.button`
-  background-color: #f5f5f5;
+  background-color: rgb(232 232 232 / 82%);
   border-radius: 10px;
-  border: 3px solid #000000;
+  border: none;
   font-weight: bold;
-  font-size: 15px;
-  padding: 12px 50px 12px 50px;
+  font-size: 13px;
+  padding: 30px 45px;
+  cursor: pointer;
 
-  &:hover {
-    background-color: #ffd954;
-    transition: 0.4s;
-  }
+  // &:hover {
+  //   background-color: #ffd954;
+  //   transition: 0.4s;
+  // }
 `;

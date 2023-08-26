@@ -36,13 +36,18 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
 
   if (isEditing) {
     return (
-      <TodoList>
-        <div>
-          <form onSubmit={submitEditedTodo}>
-            <input value={editedTitle} onChange={editTodo} id="edit-todo" />
-          </form>
-        </div>
-      </TodoList>
+      <B>
+        <NotDone></NotDone>
+        <TodoList>
+          <div>
+            <form onSubmit={submitEditedTodo}>
+              <C>
+                <input value={editedTitle} onChange={editTodo} id="edit-todo" />
+              </C>
+            </form>
+          </div>
+        </TodoList>
+      </B>
     );
   } else {
     return (
@@ -68,6 +73,14 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
   }
 };
 
+const B = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const C = styled.div`
+  border-bottom: 2.5px solid;
+`;
+
 const Contents = styled.div`
   display: flex;
   align-items: center;
@@ -78,6 +91,7 @@ const Contents = styled.div`
 const Menu = styled.img`
   width: 15px;
   height: 15px;
+  cursor: pointer;
 `;
 
 const Btn = styled.div``;
@@ -92,12 +106,17 @@ const NotDone = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  cursor: pointer;
 `;
 const TodoList = styled.div`
   display: flex;
+  // padding: 0px 20px 15px 10px;
   #edit-todo {
-    height: 20px;
+    border: none;
+    outline: none;
+    height: 35px;
     font-size: 15px;
+    width: 85%;
   }
 `;
 

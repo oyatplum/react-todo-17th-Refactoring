@@ -96,7 +96,9 @@ const Todos = {
     font-family: 'Black Han Sans', sans-serif;
     font-size: 23px;
   `,
-  Btn: styled.div``,
+  Btn: styled.div`
+    cursor: pointer;
+  `,
 };
 const C = styled.div`
   height: 100vh;
