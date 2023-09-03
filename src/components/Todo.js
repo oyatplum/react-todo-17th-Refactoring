@@ -120,11 +120,4 @@ const TodoList = styled.div`
   }
 `;
 
-const Button = styled.button`
-  border: none;
-  background: none;
-  color: rgb(104, 87, 134);
-  font-size: 18px;
-`;
-
 export default Todo;

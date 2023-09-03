@@ -48,11 +48,11 @@ function App() {
   list.map((data) => (data.completed ? data : countTodo++));
 
   return (
-    <C>
+    <Container.Form>
       <GlobalStyle />
-      <Title>todo mate</Title>
-      <Flex>
-        <Con>
+      <Container.Title>todo mate</Container.Title>
+      <Container.Flex>
+        <Container.User>
           <Profile.Container>
             <Profile.Image src={Me} />
             <Profile.Section>
@@ -61,33 +61,66 @@ function App() {
             </Profile.Section>
           </Profile.Container>
           <Calendar />
-        </Con>
-        <Conatiner>
-          <Todos.Title>Todo List</Todos.Title>
-          <Todos.Btn onClick={() => clickBtn()}>+</Todos.Btn>
+        </Container.User>
+        <Container.TodoList>
+          <Container.Section>
+            <Todos.Title>Todo List</Todos.Title>
+            <Todos.Btn onClick={() => clickBtn()}>+</Todos.Btn>
 
-          <Section>
-            {list.map((data, index) =>
-              data.completed ? (
-                <></>
-              ) : (
-                <Todo
-                  key={index}
-                  Todo={data}
-                  list={list}
-                  setList={setList}
-                  toggleTodo={toggleTodo}
-                  deleteTodo={deleteTodo}
-                ></Todo>
-              )
-            )}
-            {show && (
-              <Form getTodo={getTodo} value={value} setValue={setValue}></Form>
-            )}
-          </Section>
-        </Conatiner>
-      </Flex>
-    </C>
+            <Todos.Section>
+              {list.map((data, index) =>
+                data.completed ? (
+                  <></>
+                ) : (
+                  <Todo
+                    key={index}
+                    Todo={data}
+                    list={list}
+                    setList={setList}
+                    toggleTodo={toggleTodo}
+                    deleteTodo={deleteTodo}
+                  ></Todo>
+                )
+              )}
+              {show && (
+                <Form
+                  getTodo={getTodo}
+                  value={value}
+                  setValue={setValue}
+                ></Form>
+              )}
+            </Todos.Section>
+          </Container.Section>
+          <Container.Section>
+            <Todos.Btn onClick={() => clickBtn()}>+</Todos.Btn>
+
+            <Todos.Section>
+              {list.map((data, index) =>
+                data.completed ? (
+                  <></>
+                ) : (
+                  <Todo
+                    key={index}
+                    Todo={data}
+                    list={list}
+                    setList={setList}
+                    toggleTodo={toggleTodo}
+                    deleteTodo={deleteTodo}
+                  ></Todo>
+                )
+              )}
+              {show && (
+                <Form
+                  getTodo={getTodo}
+                  value={value}
+                  setValue={setValue}
+                ></Form>
+              )}
+            </Todos.Section>
+          </Container.Section>
+        </Container.TodoList>
+      </Container.Flex>
+    </Container.Form>
   );
 }
 
@@ -99,36 +132,44 @@ const Todos = {
   Btn: styled.div`
     cursor: pointer;
   `,
+  Section: styled.div`
+    flex: 0.5;
+    overflow: auto;
+    padding-left: 10px;
+    padding: 0px 20px 15px 20px;
+  `,
 };
-const C = styled.div`
-  height: 100vh;
-  width: 850px;
-`;
-const Flex = styled.div`
-  display: flex;
-  margin-top: 18px;
-`;
-const Section = styled.div`
-  flex: 0.5;
+const Container = {
+  Flex: styled.div`
+    display: flex;
+    margin-top: 18px;
+  `,
+  Title: styled.div`
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 23px;
+  `,
+  User: styled.div`
+    height: 100vh;
+    width: 425px;
+  `,
+  Form: styled.div`
+    height: 100vh;
+    width: 850px;
+  `,
+  TodoList: styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 425px;
+  `,
 
-  overflow: auto;
-  padding-left: 10px;
-  padding: 0px 20px 15px 20px;
-`;
-const Conatiner = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 425px;
-`;
-const Con = styled.div`
-  height: 100vh;
-  width: 425px;
-`;
-const Title = styled.div`
-  font-family: 'Black Han Sans', sans-serif;
-  font-size: 23px;
-`;
+  Section: styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  `,
+};
+
 const Profile = {
   Container: styled.div`
     display: flex;
