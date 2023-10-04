@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function Days() {
+  console.log('days');
   const days = ['일', '월', '화', '수', '목', '금', '토'];
 
   return (

@@ -4,6 +4,7 @@ import Modal from './Modal';
 import menu from './../images/menu.png';
 
 const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
+  console.log('todo');
   const [isClicked, setIsClicked] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
@@ -120,4 +121,4 @@ const TodoList = styled.div`
   }
 `;
 
-export default Todo;
+export default React.memo(Todo);

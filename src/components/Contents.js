@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import GlobalStyle from './styles/GloalStyle';
-import Contents from './components/Contents';
+import User_Main from './User_Calendar/User_Main';
+import User_TodoList from './User_TodoList/User_TodoList';
 
-function App() {
-  console.log('app');
+function Contents() {
+  console.log('contents');
 
   return (
-    <Container.Form>
-      <GlobalStyle />
-      <Container.Title>todo mate</Container.Title>
-      <Contents />
-    </Container.Form>
+    <Container.Flex>
+      <User_Main />
+      <User_TodoList />
+    </Container.Flex>
   );
 }
 
@@ -84,5 +83,4 @@ const Profile = {
     font-size: 12px;
   `,
 };
-
-export default App;
+export default Contents;

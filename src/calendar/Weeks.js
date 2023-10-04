@@ -10,6 +10,7 @@ import { addDays, isSameMonth, isSameDay } from 'date-fns';
 import './Weeks.css';
 
 export default function Weeks({ currentMonth, currentDate }) {
+  console.log('weeks');
   const StartMonth = startOfMonth(currentMonth);
   const EndMonth = endOfMonth(StartMonth);
   const StartDate = startOfWeek(StartMonth);
