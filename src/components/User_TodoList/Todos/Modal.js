@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 function Modal({ clickModal, deleteTodo, Todo, setIsEditing }) {
-  console.log('modal');
-  const click = (e) => {
-    e.stopPropagation();
-  };
-
   return (
     <Container.ModalBox onClick={clickModal}>
       <Container.Modals>

@@ -49,6 +49,5 @@ export default function Weeks({ currentMonth, currentDate }) {
     );
     one_week = [];
   }
-
   return <div className="month">{one_month}</div>;
 }

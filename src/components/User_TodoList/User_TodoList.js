@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Form from './../Form';
-import Todo from './../Todo';
+import Form from './Todos/Form';
+import Todo from './Todos/Todo';
 
 const initialTodoData = localStorage.getItem('list')
   ? JSON.parse(localStorage.getItem('list'))
   : [];
 
 function User_TodoList() {
-  console.log('user_todolist');
-
   const [show, setShow] = useState(false);
 
   const [list, setList] = useState(initialTodoData);
-  const [value, setValue] = useState('');
 
   const clickBtn = () => {
     setShow(!show);
@@ -23,18 +20,9 @@ function User_TodoList() {
     const newTodo = {
       id: Date.now(),
       title: todo,
-      completed: false,
     };
     setList([...list, newTodo]);
     localStorage.setItem('list', JSON.stringify([...list, newTodo]));
-  };
-
-  const toggleTodo = (id) => {
-    let toggledTodo = list.map((data) =>
-      data.id === id ? { ...data, completed: !data.completed } : data
-    );
-    setList(toggledTodo);
-    localStorage.setItem('list', JSON.stringify(toggledTodo));
   };
 
   const deleteTodo = (id) => {
@@ -42,9 +30,6 @@ function User_TodoList() {
     setList(deletedTodo);
     localStorage.setItem('list', JSON.stringify(deletedTodo));
   };
-
-  let countTodo = 0;
-  list.map((data) => (data.completed ? data : countTodo++));
 
   return (
     <Container.Flex>
@@ -54,23 +39,16 @@ function User_TodoList() {
           <Todos.Btn onClick={() => clickBtn()}>+</Todos.Btn>
 
           <Todos.Section>
-            {list.map((data, index) =>
-              data.completed ? (
-                <></>
-              ) : (
-                <Todo
-                  key={index}
-                  Todo={data}
-                  list={list}
-                  setList={setList}
-                  toggleTodo={toggleTodo}
-                  deleteTodo={deleteTodo}
-                ></Todo>
-              )
-            )}
-            {show && (
-              <Form getTodo={getTodo} value={value} setValue={setValue}></Form>
-            )}
+            {list.map((data) => (
+              <Todo
+                key={data.id}
+                Todo={data}
+                list={list}
+                setList={setList}
+                deleteTodo={deleteTodo}
+              ></Todo>
+            ))}
+            {show && <Form getTodo={getTodo}></Form>}
           </Todos.Section>
         </Container.Section>
       </Container.TodoList>
@@ -124,27 +102,4 @@ const Container = {
   `,
 };
 
-const Profile = {
-  Container: styled.div`
-    display: flex;
-    align-items: center;
-  `,
-  Image: styled.img`
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-  `,
-  Section: styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 8px;
-  `,
-  Name: styled.div`
-    font-weight: bold;
-    font-size: 15px;
-  `,
-  Intro: styled.div`
-    font-size: 12px;
-  `,
-};
 export default User_TodoList;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import My from './../../images/me.jpg';
 
 function Profile() {
-  console.log('profile');
   return (
     <Profiles.Container>
       <Profiles.Image src={My} />

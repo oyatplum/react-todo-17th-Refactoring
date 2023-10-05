@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Form = ({ getTodo, value, setValue }) => {
-  console.log('form');
+const Form = ({ getTodo }) => {
+  const [value, setValue] = useState('');
+
   const submitTodo = (e) => {
     e.preventDefault();
 
@@ -21,7 +22,7 @@ const Form = ({ getTodo, value, setValue }) => {
       <NotDone></NotDone>
       <Enter>
         <form onSubmit={submitTodo}>
-          <C>
+          <Put>
             <input
               type="text"
               value={value}
@@ -29,7 +30,7 @@ const Form = ({ getTodo, value, setValue }) => {
               onChange={handleChange}
               id="input-todo"
             />
-          </C>
+          </Put>
         </form>
       </Enter>
     </Container>
@@ -55,7 +56,7 @@ const Enter = styled.div`
     width: 85%;
   }
 `;
-const C = styled.div`
+const Put = styled.div`
   border-bottom: 2.5px solid;
 `;
 

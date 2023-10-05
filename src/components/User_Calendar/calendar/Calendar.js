@@ -4,8 +4,7 @@ import Days from './Days';
 import Weeks from './Weeks';
 import styled from 'styled-components';
 
-export default function Header() {
-  console.log('header');
+export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentDate, setCurrentDate] = useState(new Date());
 

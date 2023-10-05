@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-import menu from './../images/menu.png';
+import menu from './../../../images/menu.png';
 
-const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
-  console.log('todo');
+const Todo = ({ Todo, deleteTodo, list, setList }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
@@ -37,18 +36,18 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
 
   if (isEditing) {
     return (
-      <B>
-        <NotDone></NotDone>
+      <Container>
+        <NotDone />
         <TodoList>
           <div>
             <form onSubmit={submitEditedTodo}>
-              <C>
+              <Put>
                 <input value={editedTitle} onChange={editTodo} id="edit-todo" />
-              </C>
+              </Put>
             </form>
           </div>
         </TodoList>
-      </B>
+      </Container>
     );
   } else {
     return (
@@ -74,11 +73,11 @@ const Todo = ({ Todo, toggleTodo, deleteTodo, title, list, setList }) => {
   }
 };
 
-const B = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
 `;
-const C = styled.div`
+const Put = styled.div`
   border-bottom: 2.5px solid;
 `;
 
@@ -95,7 +94,9 @@ const Menu = styled.img`
   cursor: pointer;
 `;
 
-const Btn = styled.div``;
+const Btn = styled.div`
+  margin-right: 5px;
+`;
 const Done = styled.div`
   background-color: #0069ffc4;
   width: 20px;
@@ -111,7 +112,7 @@ const NotDone = styled.div`
 `;
 const TodoList = styled.div`
   display: flex;
-  // padding: 0px 20px 15px 10px;
+  margin-top: 7px;
   #edit-todo {
     border: none;
     outline: none;
@@ -121,4 +122,4 @@ const TodoList = styled.div`
   }
 `;
 
-export default React.memo(Todo);
+export default Todo;
